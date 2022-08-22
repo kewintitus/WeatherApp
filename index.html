@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./style.css" rel="stylesheet" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script defer src="./script.js"></script>
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="app container">
+      <header class="location">
+        <p class="app-input">
+          Right now in <input class="location-input" /><span>, its Clear</span>
+        </p>
+      </header>
+      <div class="current-info">
+        <div class="weather-status">
+          <ion-icon class="weather-icon" name="cloudy-outline"></ion-icon>
+        </div>
+        <div class="temp">
+          <div class="current-temp">66</div>
+          <div class="temp-range">69°/78°</div>
+        </div>
+        <div class="other-details">
+          <div class="windspeed">
+            <ion-icon class="other-details--icon" name="leaf-outline"></ion-icon
+            ><span class="other-val">6</span> mph
+          </div>
+          <div class="precipitation">
+            <ion-icon
+              class="other-details--icon"
+              name="umbrella-outline"
+            ></ion-icon
+            ><span class="other-val">0</span> %
+          </div>
+          <div class="humidity">
+            <ion-icon
+              class="other-details--icon"
+              name="water-outline"
+            ></ion-icon
+            ><span class="other-val">73</span>%
+          </div>
+        </div>
+      </div>
+      <div class="forecast">
+        <div class="day day1">
+          <div class="forecast-icon-container">
+            <ion-icon
+              class="forecast-icon"
+              name="thunderstorm-outline"
+            ></ion-icon>
+          </div>
+          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-day">Tom</div>
+        </div>
+        <div class="day day2">
+          <div class="forecast-icon-container">
+            <ion-icon
+              class="forecast-icon"
+              name="thunderstorm-outline"
+            ></ion-icon>
+          </div>
+          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-day">Tom</div>
+        </div>
+        <div class="day day3">
+          <div class="forecast-icon-container">
+            <ion-icon
+              class="forecast-icon"
+              name="thunderstorm-outline"
+            ></ion-icon>
+          </div>
+          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-day">Tom</div>
+        </div>
+        <div class="day day4">
+          <div class="forecast-icon-container">
+            <ion-icon
+              class="forecast-icon"
+              name="thunderstorm-outline"
+            ></ion-icon>
+          </div>
+          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-day">Tom</div>
+        </div>
+      </div>
+      <div class="temp-selector">
+        <div class="btn degC">°C</div>
+        <div class="btn degF active">°F</div>
+      </div>
+    </div>
+  </body>
+</html>

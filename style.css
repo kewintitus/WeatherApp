@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+.container {
+  margin: 15rem auto;
+}
+
+.app {
+  max-width: 80rem;
+  text-align: center;
+  display: grid;
+  row-gap: 3rem;
+}
+.current-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.app-input {
+  font-size: 1.8rem;
+  padding: 2rem 4rem;
+}
+.weather-icon {
+  width: 12rem;
+  height: 12rem;
+}
+
+.current-temp {
+  font-size: 7.5rem;
+  font-weight: 500;
+}
+
+.temp-range {
+  font-size: 2rem;
+}
+
+.other-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.other-details div {
+  padding: 1 rem 2rem;
+}
+
+.other-details--icon {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 1.2rem;
+}
+
+.other-val {
+  font-size: 3rem;
+}
+.windspeed,
+.precipitation,
+.humidity {
+  font-size: 1.8rem;
+}
+
+/* FORECAST-SECTION */
+.forecast {
+  display: flex;
+  justify-content: center;
+  gap: 4.8rem;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.forecast-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.forecast-temp {
+  font-size: 2.2rem;
+}
+
+.forecast-day {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.temp-selector {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8rem;
+  gap: 1.5rem;
+}
+.btn {
+  padding: 1rem 2rem;
+  background-color: rgb(98, 171, 171);
+}
+
+.active {
+  /* border: 4px solid rgb(24, 88, 88); */
+  box-shadow: inset 0 0 4px 1.5px rgb(24, 88, 88);
+}
