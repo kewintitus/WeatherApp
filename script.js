@@ -191,7 +191,11 @@ const iconChangeName = (currentCondition, current) => {
     current.is_day == 0
   ) {
     weatherIcon.name = `cloudy-night-outline`;
-  } else if (currentCondition.includes("clear") && current.is_day == 1) {
+  } else if (
+    (currentCondition.includes("clear") ||
+      currentCondition.includes("sunny")) &&
+    current.is_day == 1
+  ) {
     weatherIcon.name = `sunny-outline`;
   } else if (currentCondition.includes("clear") && current.is_day == 0) {
     weatherIcon.name = `moon-outline`;
@@ -211,7 +215,7 @@ const forecastIconChangeName = function (icon, condition) {
   // if (condition.includes("Partly cloudy")) {
   //   icon.name = `cloudy-night-outline`;
   // }
-  else if (condition.includes("clear")) {
+  else if (condition.includes("clear") || condition.includes("sunny")) {
     icon.name = `sunny-outline`;
   }
   // if (condition.includes("Clear")) {
