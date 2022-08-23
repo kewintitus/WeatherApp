@@ -79,7 +79,7 @@ const getCurrentWeather = async function (location) {
 
 const getForecastWeather = async function (location) {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=c9be8801bdb34590a3781244222208&q=${location}&days=5`
+    `https://api.weatherapi.com/v1/forecast.json?key=c9be8801bdb34590a3781244222208&q=${location}&days=5`
   );
   const data = await res.json();
   return data;
