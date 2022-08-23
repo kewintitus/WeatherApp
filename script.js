@@ -63,9 +63,9 @@ const getCurrentLocation = async function () {
 };
 
 // console.log(weatherIcon);
-weatherIcon.addEventListener("click", function (e) {
-  weatherIcon.name = `partly-sunny-outline`;
-});
+// weatherIcon.addEventListener("click", function (e) {
+//   weatherIcon.name = `partly-sunny-outline`;
+// });
 /////////////////////////////////////////////////
 
 const getCurrentWeather = async function (location) {
