@@ -26,7 +26,17 @@
     <div class="app container">
       <header class="location">
         <p class="app-input">
-          Right now in <input class="location-input" /><span>, its Clear</span>
+          Right now in
+          <input
+            class="location-input"
+            type="text"
+            style="min-width: 1px"
+            spellcheck="false"
+            placeholder=" city name"
+          />
+          <span
+            >,its <span class="location-weatherCondition"> clear</span>
+          </span>
         </p>
       </header>
       <div class="current-info">
@@ -34,8 +44,14 @@
           <ion-icon class="weather-icon" name="cloudy-outline"></ion-icon>
         </div>
         <div class="temp">
-          <div class="current-temp">66</div>
-          <div class="temp-range">69°/78°</div>
+          <div class="curTemp"><span class="current-temp">66</span>°</div>
+          <div class="temp-range">
+            <span class="current-minTemp">69</span>°/<span
+              class="current-maxTemp"
+              >78</span
+            >
+            °
+          </div>
         </div>
         <div class="other-details">
           <div class="windspeed">
@@ -47,14 +63,14 @@
               class="other-details--icon"
               name="umbrella-outline"
             ></ion-icon
-            ><span class="other-val">0</span> %
+            ><span class="other-val">0</span> mm
           </div>
           <div class="humidity">
             <ion-icon
               class="other-details--icon"
               name="water-outline"
             ></ion-icon
-            ><span class="other-val">73</span>%
+            ><span class="other-val">73</span> %
           </div>
         </div>
       </div>
@@ -66,7 +82,11 @@
               name="thunderstorm-outline"
             ></ion-icon>
           </div>
-          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-temp">
+            <span class="f-max-temp">74</span>°/<span class="f-min-temp"
+              >62</span
+            >°
+          </div>
           <div class="forecast-day">Tom</div>
         </div>
         <div class="day day2">
@@ -76,7 +96,11 @@
               name="thunderstorm-outline"
             ></ion-icon>
           </div>
-          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-temp">
+            <span class="f-max-temp">74</span>°/<span class="f-min-temp"
+              >62</span
+            >°
+          </div>
           <div class="forecast-day">Tom</div>
         </div>
         <div class="day day3">
@@ -86,7 +110,11 @@
               name="thunderstorm-outline"
             ></ion-icon>
           </div>
-          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-temp">
+            <span class="f-max-temp">74</span>°/<span class="f-min-temp"
+              >62</span
+            >°
+          </div>
           <div class="forecast-day">Tom</div>
         </div>
         <div class="day day4">
@@ -96,7 +124,11 @@
               name="thunderstorm-outline"
             ></ion-icon>
           </div>
-          <div class="forecast-temp"><span>74</span>°/<span>62</span>°</div>
+          <div class="forecast-temp">
+            <span class="f-max-temp">74</span>°/<span class="f-min-temp"
+              >62</span
+            >°
+          </div>
           <div class="forecast-day">Tom</div>
         </div>
       </div>
