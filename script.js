@@ -1,11 +1,11 @@
-"use strict";
-const weatherIcon = document.querySelector(".weather-icon");
-let input = document.querySelector(".location-input");
-const headerWeatherinfo = document.querySelector(".location-weatherCondition");
+'use strict';
+const weatherIcon = document.querySelector('.weather-icon');
+let input = document.querySelector('.location-input');
+const headerWeatherinfo = document.querySelector('.location-weatherCondition');
 
-const btn = document.querySelectorAll(".btn");
-const btndegC = document.querySelector(".degC");
-const btndegF = document.querySelector(".degF");
+const btn = document.querySelectorAll('.btn');
+const btndegC = document.querySelector('.degC');
+const btndegF = document.querySelector('.degF');
 
 let locationName;
 let tempUnit;
@@ -13,18 +13,18 @@ let uniData;
 
 ///FUNCTIONS///
 const removeActive = (btn) => {
-  btn.classList.remove("active");
+  btn.classList.remove('active');
 };
 
 const btnListners = () => {
   btn.forEach((btn) => {
-    btn.addEventListener("click", function (e) {
+    btn.addEventListener('click', function (e) {
       // console.log(e);
       // console.log(e.srcElement.classList.contains("active"));
       // removeActive(btn);
-      if (!e.srcElement.classList.contains("active")) {
-        btndegC.classList.toggle("active");
-        btndegF.classList.toggle("active");
+      if (!e.srcElement.classList.contains('active')) {
+        btndegC.classList.toggle('active');
+        btndegF.classList.toggle('active');
       }
       renderData(uniData);
     });
@@ -34,16 +34,19 @@ const btnListners = () => {
 /////
 
 const getInput = () => {
-  input.addEventListener("keypress", function (e) {
-    if (e.key == "Enter" && input.textContent != null) {
+  input.addEventListener('keypress', function (e) {
+    if (e.key == 'Enter' && input.textContent != null) {
       locationName = input.value;
       updateData();
     }
   });
 };
 
-//////////////////////////////////////
-////////When using geolocation
+/**
+ * @description
+ * @returns current location
+ *
+ */
 const checkInput = function () {
   if (!locationName) {
     return getCurrentLocation();
@@ -69,27 +72,32 @@ const getCurrentLocation = async function () {
 /////////////////////////////////////////////////
 
 const getCurrentWeather = async function (location) {
-  const res = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=c9be8801bdb34590a3781244222208&q=${location}
+  try {
+    const res = await fetch(
+      `http://api.weatherapi.com/v1/current.json?key=c9be8801bdb34590a3781244222208&q=${location}
     `
-  );
-  const data = await res.json();
-  return data;
+    );
+
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err.messaage);
+  }
 };
 
 const getForecastWeather = async function (location) {
   const res = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=c9be8801bdb34590a3781244222208&q=${location}&days=5`
+    `https://api.weatherapi.com/v1/forecast.json?key=f7269e595cc9437b820110020221210=${location}&days=5`
   );
   const data = await res.json();
   return data;
 };
 
 const checkState = () => {
-  if (btndegC.classList.contains("active")) {
-    return "c";
-  } else btndegF.classList.contains("active");
-  return "f";
+  if (btndegC.classList.contains('active')) {
+    return 'c';
+  } else btndegF.classList.contains('active');
+  return 'f';
 };
 
 //////////////Render Data////////////
@@ -126,14 +134,13 @@ const renderCurrentData = (current) => {
 const renderCurrentMaxMinTemp = function (forecast) {
   const forecastDay = forecast.forecastday[0];
   // console.log(forecastDay);
-  const currentMaxTemp = document.querySelector(".current-maxTemp");
-  const currentMinTemp = document.querySelector(".current-minTemp");
+  const currentMaxTemp = document.querySelector('.current-maxTemp');
+  const currentMinTemp = document.querySelector('.current-minTemp');
   // console.log(currentMaxTemp, currentMinTemp);
   currentMaxTemp.textContent = forecastDay.day[`maxtemp_${tempUnit}`];
   currentMinTemp.textContent = forecastDay.day[`mintemp_${tempUnit}`];
 };
 
-//Forecast Data
 const renderForecastData = (forecast) => {
   // console.log(forecast.forecastday);
   const forecastArray = forecast.forecastday.slice(1);
@@ -141,13 +148,13 @@ const renderForecastData = (forecast) => {
   forecastArray.forEach(function (forecast, index) {
     const dayMaxTempEl = document
       .querySelector(`.day${index + 1}`)
-      .querySelector(".f-max-temp");
+      .querySelector('.f-max-temp');
     const dayMinTempEl = document
       .querySelector(`.day${index + 1}`)
-      .querySelector(".f-min-temp");
+      .querySelector('.f-min-temp');
     const dayAvgTempEl = document
       .querySelector(`.day${index + 1}`)
-      .querySelector(".f-min-temp");
+      .querySelector('.f-min-temp');
 
     const day = document
       .querySelector(`.day${index + 1}`)
@@ -158,9 +165,9 @@ const renderForecastData = (forecast) => {
     const fData = forecast.day;
     const dayIP = new Date(forecast.date);
     const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "numeric",
+      weekday: 'long',
+      day: 'numeric',
+      month: 'numeric',
     };
 
     // console.log(dayIP);
@@ -174,56 +181,56 @@ const renderForecastData = (forecast) => {
     dayMaxTempEl.textContent = maxTemp;
     dayMinTempEl.textContent = minTemp;
     dayAvgTempEl.textContent = avgTemp;
-    day.textContent = new Intl.DateTimeFormat("en-US", options).format(dayIP);
+    day.textContent = new Intl.DateTimeFormat('en-US', options).format(dayIP);
   });
 };
 // ForecastIcon
 const iconChangeName = (currentCondition, current) => {
-  if (currentCondition == "cloudy") {
+  if (currentCondition == 'cloudy') {
     weatherIcon.name = `cloudy-outline`;
   } else if (
-    currentCondition.includes("partly cloudy") &&
+    currentCondition.includes('partly cloudy') &&
     current.is_day == 1
   ) {
     weatherIcon.name = `partly-sunny-outline`;
   } else if (
-    currentCondition.includes("partly cloudy") &&
+    currentCondition.includes('partly cloudy') &&
     current.is_day == 0
   ) {
     weatherIcon.name = `cloudy-night-outline`;
   } else if (
-    (currentCondition.includes("clear") ||
-      currentCondition.includes("sunny")) &&
+    (currentCondition.includes('clear') ||
+      currentCondition.includes('sunny')) &&
     current.is_day == 1
   ) {
     weatherIcon.name = `sunny-outline`;
-  } else if (currentCondition.includes("clear") && current.is_day == 0) {
+  } else if (currentCondition.includes('clear') && current.is_day == 0) {
     weatherIcon.name = `moon-outline`;
-  } else if (currentCondition.includes("thunder")) {
+  } else if (currentCondition.includes('thunder')) {
     weatherIcon.name = `thunderstorm-outline`;
-  } else if (currentCondition.includes("rain")) {
+  } else if (currentCondition.includes('rain')) {
     weatherIcon.name = `rainy-outline`;
   }
 };
 
 const forecastIconChangeName = function (icon, condition) {
-  if (condition == "cloudy") {
+  if (condition == 'cloudy') {
     icon.name = `cloudy-outline`;
-  } else if (condition.includes("partly cloudy")) {
+  } else if (condition.includes('partly cloudy')) {
     icon.name = `partly-sunny-outline`;
   }
   // if (condition.includes("Partly cloudy")) {
   //   icon.name = `cloudy-night-outline`;
   // }
-  else if (condition.includes("clear") || condition.includes("sunny")) {
+  else if (condition.includes('clear') || condition.includes('sunny')) {
     icon.name = `sunny-outline`;
   }
   // if (condition.includes("Clear")) {
   //   icon.name = `moon-outline`;
   // }
-  else if (condition.includes("thunder")) {
+  else if (condition.includes('thunder')) {
     icon.name = `thunderstorm-outline`;
-  } else if (condition.includes("rain")) {
+  } else if (condition.includes('rain')) {
     icon.name = `rainy-outline`;
   }
 };
