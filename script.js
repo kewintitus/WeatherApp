@@ -31,8 +31,6 @@ const btnListners = () => {
   });
 };
 
-/////
-
 const getInput = () => {
   input.addEventListener('keypress', function (e) {
     if (e.key == 'Enter' && input.textContent != null) {
@@ -74,7 +72,7 @@ const getCurrentLocation = async function () {
 const getCurrentWeather = async function (location) {
   try {
     const res = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=c9be8801bdb34590a3781244222208&q=${location}
+      `http://api.weatherapi.com/v1/current.json?key=674b0ee9a3694c35a1b153356222710&q=${location}
     `
     );
 
