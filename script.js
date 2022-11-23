@@ -11,6 +11,8 @@ let locationName;
 let tempUnit;
 let uniData;
 
+const apiKey = 'fa46a6dc2ee44217942120136222311';
+
 ///FUNCTIONS///
 const removeActive = (btn) => {
   btn.classList.remove('active');
@@ -72,7 +74,7 @@ const getCurrentLocation = async function () {
 const getCurrentWeather = async function (location) {
   try {
     const res = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=674b0ee9a3694c35a1b153356222710&q=${location}
+      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}
     `
     );
 
@@ -85,7 +87,7 @@ const getCurrentWeather = async function (location) {
 
 const getForecastWeather = async function (location) {
   const res = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=674b0ee9a3694c35a1b153356222710&q=${location}&days=5`
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=5`
   );
   const data = await res.json();
   return data;
